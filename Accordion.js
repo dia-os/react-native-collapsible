@@ -77,17 +77,34 @@ class Accordion extends Component {
       <View {...viewProps}>
       {this.props.sections.map((section, key) => (
         <View key={key}>
-          <TouchableHighlight onPress={() => this._toggleSection(key)} underlayColor={this.props.underlayColor}>
+
+        <TouchableOpacity onPress={() => {
+          //console.log('isTouchEnabled1' + this.props.isTouchEnabled);
+          if (this.props.isTouchEnabled) {
+            this._toggleSection(key);
+          }
+        }}>
+        <View onStartShouldSetResponder={(evt) => {
+          //console.log('isTouchEnabled0' + this.props.isTouchEnabled);
+          if (!this.props.isTouchEnabled) {
+            //console.log('isTouchEnabled' + this.props.isTouchEnabled);
+            this._toggleSection(key);
+          }
+        }}
+        underlayColor={this.props.underlayColor}>
             {this.props.renderHeader(section, key, this.state.activeSection === key)}
-          </TouchableHighlight>
+              </View>
+            </TouchableOpacity>
+
           <Collapsible collapsed={this.state.activeSection !== key} {...collapsibleProps}>
             {this.props.renderContent(section, key, this.state.activeSection === key)}
           </Collapsible>
         </View>
       ))}
       </View>
-    );
+      );
   }
+
 }
 
 module.exports = Accordion;

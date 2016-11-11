@@ -31,7 +31,7 @@ class Collapsible extends Component {
     align: 'top',
     collapsed: true,
     collapsedHeight: ALMOST_ZERO,
-    duration: 300,
+    duration: 0,
     easing: 'easeOutCubic',
   };
 
