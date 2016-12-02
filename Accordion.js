@@ -1,11 +1,7 @@
-import React, {
-  Component,
-  PropTypes,
+import React, { Component, PropTypes,
 } from 'react';
 
-import {
-  View,
-  TouchableHighlight,
+import { View, TouchableHighlight, TouchableOpacity,
 } from 'react-native';
 
 import Collapsible from './Collapsible';
@@ -47,7 +43,9 @@ class Accordion extends Component {
     const activeSection = this.state.activeSection === section ? false : section;
 
     if (this.props.activeSection === undefined) {
-      this.setState({ activeSection });
+      this.setState({
+        activeSection
+      });
     }
     if (this.props.onChange) {
       this.props.onChange(activeSection);
