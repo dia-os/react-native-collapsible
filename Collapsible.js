@@ -27,7 +27,7 @@ class Collapsible extends Component {
   static defaultProps = {
     align: 'top',
     collapsed: true,
-    collapsedHeight: ALMOST_ZERO,
+    collapsedHeight: 0,
     duration: 0,
     easing: 'easeOutCubic',
   };
